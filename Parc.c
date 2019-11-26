@@ -110,11 +110,11 @@ int louer(char *matricule, Voiture *voitures, int n)
         }
         else if(verif==0 && (voitures+i)->etatDispo==2)//SI VOITURE EXISTE ET INDISPONIBLE
         {
-            printf("\nCETTE VOITURE EST DEJA EN COURS DE LOCATION CHEZ UN CLIENT.\n\n");
+            printf("\nCETTE VOITURE EST EN LOCATION, VEUILLEZ CONSULTER LA LISTE DES VOITURES DISPONIBLE CI-DESSUS ET REESSAYER.\n\n");
             return 0;
         }
     }
-    printf("\nERREUR, LA VOITURE QUE VOUS VOULEZ LOUER N'EXISTE PAS DANS NOTRE REPERTOIRE.\n\n");
+    printf("\nVOITURE INTROUVABLE! VERIFIEZ ET REESSAYEZ.\n\n");
     return 0;
 }
 
@@ -144,11 +144,11 @@ int retour(char *matricule, Voiture *voitures,int n,float *kilom)
         }
         else if(verif==0 && (voitures+i)->etatDispo==1)//SI VOITURE EXISTE ET DISPONIBLE
         {
-            printf("\nCETTE VOITURE N'ETAIT PAS EN LOCATION.\n\n");
+            printf("\nCETTE VOITURE N'EST PAS LOUEE, VEUILLEZ CONSULTER LA LISTE DES VOITURES EN LOCATION CI-DESSUS ET REESSAYEZ.\n\n");
             return 0;
         }
     }
-    printf("\nERREUR, LA VOITURE QUE VOUS VOULEZ RETOURNER N'EXISTE PAS DANS NOTRE REPERTOIRE\n.\n");
+    printf("\nVOITURE INTROUVABLE! VERIFIER ET REESSAYEZ\n\n");
    return 0;
 }
 
@@ -179,7 +179,7 @@ int etat(char *matricule, Voiture *voitures,int n)
             return 0;
         }
     }
-    printf("\nERREUR, LA VOITURE DONT VOUS VOULEZ CONNAITRE L'ETAT N'EXISTE PAS DANS NOTRE REPERTOIRE.\n\n");
+    printf("\nVOITURE INTROUVABLE! VERIFIER ET REESSAYEZ.\n\n");
     return 0;
 }
 
