@@ -9,7 +9,7 @@ int main()
 
 
     Voiture *voitures=NULL;
-    int nbVoitures=0,c=0;
+    int nbVoitures=0,c=0,cmpt=0,i;
     float kilom=0;
     char newline;
     char matricule[TAILLE_TABLEAU]="",nomFichier[TAILLE_TABLEAU]="";
@@ -45,18 +45,51 @@ int main()
     switch(c)
     {
     case 1:
-        printf("ENTRER LE NUMERO D'IMMATRICULATION DE LA VOITURE QUE VOUS DESIREZ LOUEE: ");
+        for(i=0;i<nbVoitures;i++)
+        {
+            if((voitures+i)->etatDispo==1)
+            {
+                printf("VOITURE DISPONIBLE: %s\n",(voitures+i)->numImatricule);
+                cmpt++;
+            }
+        }
+        if(cmpt==0)
+        {
+            printf(" (0) VOITURE DISPONIBLE ACTUELLEMENT, VEUILLEZ REESSAYEZ PLUS TARD\n\n");
+            goto a;
+        }
+        cmpt=0;
+        printf("ENTRER LE NUMERO D'IMMATRICULATION D'UNE VOITURE DISPONIBLE DE VOTRE CHOIX: ");
         fgets(matricule,TAILLE_TABLEAU,stdin);
         louer(matricule,voitures,nbVoitures);//APPEL DE FONCTION POUR LOUER UNE VOITURE
         goto a;
         break;
     case 2:
-        printf("ENTRER LE NUMERO D'IMMATRICULATION DE LA VOITURE QUE VOUS DESIREZ RETOUNER: ");
+        for(i=0;i<nbVoitures;i++)
+        {
+            if((voitures+i)->etatDispo==2)
+            {
+                printf("EN LOCATION: %s\n",(voitures+i)->numImatricule);
+                cmpt++;
+            }
+        }
+        if(cmpt==0)
+        {
+            printf(" (0) VOITURE EN COURS DE LOCATION ACTUELLEMENT, VEUILLEZ CHOISIR UNE AUTRE OPTION\n\n");
+            goto a;
+        }
+        cmpt=0;
+        printf("ENTRER LE NUMERO D'IMMATRICULATION CORRESPONDANT A LA VOITURE QUE VOUS RETOURNEZ: ");
         fgets(matricule,TAILLE_TABLEAU,stdin);
         retour(matricule,voitures,nbVoitures,&kilom);//APPEL DE FONCTION POUR RETOURNER UNE VOITURE
         goto a;
         break;
     case 3:
+        printf("IMMATRICULATION(S):\n");
+        for(i=0;i<nbVoitures;i++)
+        {
+            printf("%s",(voitures+i)->numImatricule);
+        }
         printf("ENTRER LE NUMERO D'IMMATRICULATION DE LA VOITURE DONT VOUS VOULEZ CONNAITRE L'ETAT: ");
         fgets(matricule,TAILLE_TABLEAU,stdin);
         etat(matricule,voitures,nbVoitures);//APPEL DE FONCTION POUR AFFICHER L'ETAT D'UNE VOITURE

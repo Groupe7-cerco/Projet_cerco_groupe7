@@ -22,7 +22,7 @@ float init(Voiture *voiture,int *n)
       burgkilom(&(voiture+i)->kilometrage);// APPEL DE LA FONCTION POUR EMPECHER QUE L'UTILISATEUR TAPE DES VALEURS NON PRISES EN CHARGE LORS DE LA SAISIE
       kilo=(voiture+i)->kilometrage;//CONSERVE LA PREMIERE VALEUR DU KILOMETRAGE POUR COMPARER PLUS TARD DANS LA BOUCLE
       a:printf("ENTRER SON ETAT \n");
-      printf(" 1:DISPONIBLE     2:EN COURS DE LOCATION: ");
+      printf("1:DISPONIBLE\n2:EN COURS DE LOCATION\n\n");
       burg(&(voiture+i)->etatDispo);// APPEL DE LA FONCTION POUR EMPECHER QUE L'UTILISATEUR TAPE DES VALEURS NON PRISE EN CHARGE LORS DE LA SAISIE
       if((voiture+i)->etatDispo!=1 && (voiture+i)->etatDispo!=2)//IMPOSER LA VALEUR 1 OU 2 POUR LE CHOIX DE L'ETAT DE DISPONIBILITE D'UNE VOITURE A LA CREATION
       {
@@ -61,7 +61,7 @@ float init(Voiture *voiture,int *n)
            kilo=(voiture+i)->kilometrage;
        }//FIN DE STOCKAGE
       b:printf("ENTRER SON ETAT \n");
-      printf("1:DISPONIBLE     2:EN COURS DE LOCATION: ");
+      printf("1:DISPONIBLE\n2:EN COURS DE LOCATION\n\n");
       burg(&(voiture+i)->etatDispo);
       if((voiture+i)->etatDispo!=1 && (voiture+i)->etatDispo!=2)//IMPOSER LE CHOIX 1 OU 2 A L'UTILISATEUR POUR L'ETAT DE LOCATION DE LA VOITURE A LA CREATION
       {
